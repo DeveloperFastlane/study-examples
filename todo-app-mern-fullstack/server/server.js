@@ -12,8 +12,8 @@ app.use(cors());
 mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-  useFindAndModify: false,
 });
+
 
 const db = mongoose.connection;
 db.on('error', (error) => console.error(error));
@@ -51,7 +51,7 @@ app.post('/todos', async (req, res) => {
 
 app.delete('/todos/:id', async (req, res) => {
   try {
-    await Todo.findByIdAndDelete(req.params.id);
+    await Todo.findOneAndDelete(req.params.id);
     res.json({ message: 'Todo deleted successfully' });
   } catch (error) {
     res.status(500).json({ message: error.message });
