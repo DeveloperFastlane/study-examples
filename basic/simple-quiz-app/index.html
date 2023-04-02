@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <title>General Knowledge Quiz</title>
+</head>
+<body>
+  <div id="app">
+    <!-- Quiz List -->
+    <div id="quiz-list" class="container">
+      <h1>퀴즈 목록</h1>
+      <div class="row">
+        <!-- 각 퀴즈 카드가 이곳에 삽입됩니다. -->
+      </div>
+    </div>
+
+    <!-- Quiz Detail -->
+    <div id="quiz-detail" class="container" style="display: none;">
+      <h1 id="quiz-title">퀴즈 제목</h1>
+      <div id="quiz-questions">
+        <!-- 각 질문이 이곳에 삽입됩니다. -->
+      </div>
+      <button id="submit-quiz">제출하기</button>
+      <button id="back-to-list">목록으로 돌아가기</button>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
