@@ -102,7 +102,7 @@ function Snake() {
 
   this.eat = function (fruit) {
     if (this.x === fruit.x && this.y === fruit.y) {
-      this.tail.push({ x: this.x, y: this.y });
+      this.tail.push({ x: this.x - this.xSpeed, y: this.y - this.ySpeed });
       return true;
     }
     return false;
