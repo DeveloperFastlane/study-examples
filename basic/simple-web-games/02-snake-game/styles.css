@@ -32,6 +32,28 @@ canvas {
   border: 1px solid #000;
 }
 
+.buttons {
+  margin-top: 1rem;
+}
+
+.buttons button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1rem;
+  margin: 0 0.5rem;
+  cursor: pointer;
+  border-radius: 0.5rem;
+}
+
+.buttons button:hover {
+  background-color: #45a049;
+}
+
 .score {
   font-size: 1.2rem;
   margin-top: 1rem;

@@ -6,6 +6,8 @@ const columns = canvas.width / scale;
 let score = 0;
 
 let snake;
+let fruit;
+let gameInterval;
 
 (function setup() {
   snake = new Snake();
@@ -13,21 +15,37 @@ let snake;
 
   fruit.pickLocation();
 
-  window.setInterval(() => {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    fruit.draw();
-    snake.update();
-    snake.draw();
-
-    if (snake.eat(fruit)) {
-      score++;
-      document.getElementById("score").textContent = score;
-      fruit.pickLocation();
-    }
-
-    snake.checkCollision();
-  }, 250);
 }());
+
+function startGame() {
+  if (!gameInterval) {
+    gameInterval = setInterval(() => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      fruit.draw();
+      snake.update();
+      snake.draw();
+
+      if (snake.eat(fruit)) {
+        score++;
+        document.getElementById("score").textContent = score;
+        fruit.pickLocation();
+      }
+
+      snake.checkCollision();
+    }, 250);
+  }
+}
+
+function stopGame() {
+  clearInterval(gameInterval);
+  gameInterval = null;
+}
+
+function gameOver() {
+  alert("게임 오버! 점수: " + score);
+  snake.reset();
+  stopGame();
+}
 
 function Snake() {
   this.x = 0;
@@ -57,7 +75,7 @@ function Snake() {
     this.y += this.ySpeed;
 
     if (this.x < 0 || this.y < 0 || this.x >= canvas.width || this.y >= canvas.height) {
-      this.reset();
+      gameOver();
     }
   };
 
@@ -93,7 +111,7 @@ function Snake() {
   this.checkCollision = function () {
     for (let i = 0; i < this.tail.length; i++) {
       if (this.x === this.tail[i].x && this.y === this.tail[i].y) {
-        this.reset();
+        gameOver();
       }
     }
   };
@@ -128,3 +146,6 @@ window.addEventListener("keydown", (event) => {
   const direction = event.key.replace("Arrow", "");
   snake.changeDirection(direction);
 });
+
+document.getElementById("start-btn").addEventListener("click", startGame);
+document.getElementById("stop-btn").addEventListener("click", stopGame);
