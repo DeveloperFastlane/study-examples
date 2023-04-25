@@ -19,7 +19,7 @@ export default function Contact() {
           <label className="block text-xl md:text-2xl lg:text-3xl font-semibold mb-2" htmlFor="message">
             메시지
           </label>
-          <textarea className="w-full px-4 py-2 text-md md:text-xl lg:text-2xl border rounded" id="message" rows="5" />
+          <textarea className="w-full px-4 py-2 text-md md:text-xl lg:text-2xl border rounded" id="message" rows={5} />
         </div>
         <button className="w-full py-2 px-4 bg-green-500 text-white font-semibold rounded" type="submit">문의하기</button>
       </form>
